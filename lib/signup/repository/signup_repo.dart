@@ -18,8 +18,9 @@ class SignupRepo {
         'Username': Username,
         'Email': Email,
         'Phone': phonenumber,
-        'Password':Password
-      });
+        'Password':Password,
+        'Profile_image':''
+      }); 
       Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context)

@@ -13,12 +13,15 @@ dependencies:
   dependencies:
   firebase_auth: ^4.2.4
   firebase_core: ^2.4.1
+  firebase_storage: ^11.0.10
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
   flutter_localizations:
     sdk: flutter
+  image_picker: ^0.8.6
   intl: ^0.17.0
+  uuid: ^3.0.7
 
 dev_dependencies:
   bloc_test: ^9.1.0

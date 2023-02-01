@@ -15,6 +15,7 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _phoneNumber = TextEditingController();
   TextEditingController _password = TextEditingController();
+  TextEditingController _confirmPassword = TextEditingController();
   final  _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -180,7 +181,7 @@ class _SignupPageState extends State<SignupPage> {
                                         return "Incorrect password";
                                       }
                                     },
-                                    controller: _userName,
+                                    controller: _confirmPassword,
                                     decoration: InputDecoration(
                                         hintText: 'Confirm Password',
                                         hintStyle:
