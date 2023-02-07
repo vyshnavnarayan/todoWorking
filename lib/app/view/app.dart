@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo/l10n/l10n.dart';
 import 'package:todo/login/view/login_page.dart';
 import 'package:todo/signup/signup.dart';
+import 'package:todo/splash_screen/view/splashPage.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -18,7 +19,7 @@ class App extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: Login(),
+      home: SplashPage(),
     );
   }
 }
