@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:todo/homescreen/repository/manage_task_repo.dart';
-import 'package:todo/homescreen/view/add_Task.dart';
-import 'package:todo/profile/view/profile_page.dart';
+import 'package:very_good_app/homescreen/repository/manage_task_repo.dart';
+import 'package:very_good_app/homescreen/view/add_Task.dart';
+import 'package:very_good_app/profile/view/profile_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
