@@ -1,7 +1,6 @@
 part of 'signup_bloc.dart';
 
-abstract class SignupEvent {
-}
+abstract class SignupEvent {}
 
 class UserSignupEvent extends SignupEvent{
 

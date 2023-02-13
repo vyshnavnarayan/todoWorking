@@ -29,8 +29,10 @@ class _SignupPageState extends State<SignupPage> {
           // TODO: implement listener
           print(state);
           if(state is SignupSucess){
+            print('*****************');
             Navigator.push(context, MaterialPageRoute(builder: (context) => Login(),));
           }else{
+            print('###################');
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('SignUp failed')));
           }
         },
@@ -226,10 +228,10 @@ class _SignupPageState extends State<SignupPage> {
                                     if (_formKey.currentState!.validate()) {
                                       print('valid');
                                       signupBloc.add(UserSignupEvent(
+                                        name: _userName.text,
                                           email: _emailController.text,
-                                          password: _password.text,
-                                          name: _userName.text,
-                                          phonenumber: _phoneNumber.text));
+                                          phonenumber: _phoneNumber.text,
+                                           password: _password.text,));
                                     }
                                   },
                                   child: Text('SignUp')),

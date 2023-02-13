@@ -6,21 +6,21 @@ import 'package:todo/signup/bloc/signup_bloc.dart';
 
  
   Future<void> createUser(UserSignupEvent event) async {
-    final _auth = FirebaseAuth.instance;
+    final auth = FirebaseAuth.instance;
     final CollectionReference userRef =
         FirebaseFirestore.instance.collection('usercollection');
     try {
-      final userCredential = await _auth.createUserWithEmailAndPassword(
+      final userCredential = await auth.createUserWithEmailAndPassword(
         email: event.email,
         password: event.password,
       );
-      await userRef.doc('mjZ9MjwcAneIG1exb75Ho9S8JrI3').set({
-        // 'Userid': _auth.currentUser!.uid,
+      await userRef.doc(userCredential.user!.uid).set({
+        'Userid': auth.currentUser!.uid,
         'Username': event.name,
         'Email': event.email,
         'Phone': event.phonenumber,
         'Password':event.password,
-        'Profile_image':'gg'
+        'Profile_image':" "
       }); 
       
     } on FirebaseAuthException catch (e) {
