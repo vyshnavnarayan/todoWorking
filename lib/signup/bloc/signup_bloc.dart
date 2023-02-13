@@ -4,8 +4,6 @@ import 'package:todo/signup/repository/signup_repo.dart';
 part 'signup_event.dart';
 part 'signup_state.dart';
 
-
-
 class SignupBloc extends Bloc<SignupEvent, SignupState> {
   SignupBloc() : super(SignupInitial()) {
     on<SignupEvent>((event, emit) async{
@@ -13,7 +11,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
       if(event is UserSignupEvent){
         try {
           await createUser(event);
-          emit (SignupSucess());
+          emit (SignupSuccess());
         } catch (e) {
           emit (SignupFailed());
         }

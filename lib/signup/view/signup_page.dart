@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo/login/login.dart';
+import 'package:todo/login/view/login_page.dart';
 import 'package:todo/signup/bloc/signup_bloc.dart';
 import 'package:todo/signup/repository/signup_repo.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -19,20 +19,20 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController _password = TextEditingController();
   TextEditingController _confirmPassword = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  final signupBloc = SignupBloc();
+  final regBloc = SignupBloc();
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => signupBloc,
+      create: (context) => regBloc,
       child: BlocListener<SignupBloc, SignupState>(
         listener: (context, state) {
           // TODO: implement listener
-          print(state);
-          if(state is SignupSucess){
-            print('*****************');
+
+           print(state);
+          if(state is SignupSuccess){
             Navigator.push(context, MaterialPageRoute(builder: (context) => Login(),));
           }else{
-            print('###################');
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('SignUp failed')));
           }
         },
@@ -40,9 +40,10 @@ class _SignupPageState extends State<SignupPage> {
           body: Container(
             width: double.infinity,
             decoration: BoxDecoration(
+              
                 gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-              Colors.deepPurple.shade900,
-              Colors.orange.shade600,
+              Colors.black,
+              Colors.grey,
             ])),
             child: ListView(
               // crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +63,7 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                 ),
                 Container(
-                    height: 500,
+                    height: 1000,
                     width: double.infinity,
                     decoration: BoxDecoration(
                         image: DecorationImage(
@@ -227,28 +228,48 @@ class _SignupPageState extends State<SignupPage> {
 
                                     if (_formKey.currentState!.validate()) {
                                       print('valid');
-                                      signupBloc.add(UserSignupEvent(
-                                        name: _userName.text,
-                                          email: _emailController.text,
-                                          phonenumber: _phoneNumber.text,
-                                           password: _password.text,));
+                                      regBloc.add(UserSignupEvent(
+                                        name: _userName.text, 
+                                        email: _emailController.text, 
+                                        phonenumber: _phoneNumber.text,
+                                         password: _password.text,),);
+                                          
                                     }
                                   },
-                                  child: Text('SignUp')),
+                                  child: const Text('SignUp'),),
                             ),
-                            TextButton(
-                                onPressed: () {
+
+
+                            SizedBox(height: 10),
+                            SizedBox(
+                              width: double.infinity,
+                              height: 50,
+                              child: ElevatedButton(
+                                 onPressed: () {
                                   Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Login(),
-                                      ));
-                                },
-                                child: Text('Login'))
+                                    context,
+                                     MaterialPageRoute(
+                                      builder: (context) => Login(),
+                                     ));
+                               },
+                                child: const Text('Login'),),
+                            ),
+
+                            
+                            // TextButton(
+                            //     onPressed: () {
+                            //       Navigator.push(
+                            //           context,
+                            //           MaterialPageRoute(
+                            //             builder: (context) => Login(),
+                            //           ));
+                            //     },
+                            //     child: const Text('Login'),),
+                                
                           ],
                         ),
                       ),
-                    ))
+                    ),)
               ],
             ),
           ),

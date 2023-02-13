@@ -1,5 +1,6 @@
-import 'package:todo/app/app.dart';
-import 'package:todo/bootstrap.dart';
+
+import 'app/view/app.dart';
+import 'bootstrap.dart';
 
 void main() {
   bootstrap(() => const App());

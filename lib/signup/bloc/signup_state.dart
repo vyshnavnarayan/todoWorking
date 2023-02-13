@@ -5,6 +5,6 @@ abstract class SignupState {}
 
 class SignupInitial extends SignupState {}
 
-class SignupSucess extends SignupState {}
+class SignupSuccess extends SignupState {}
 
 class SignupFailed extends SignupState {}
